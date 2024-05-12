@@ -27,6 +27,7 @@ func collectInput() {
 	fmt.Println("What is your name?")
 	_, err := fmt.Scanln(&customerName)
 	if err != nil {
+		fmt.Println("Error:", err)
 		return
 	}
 
@@ -43,6 +44,7 @@ func collectInput() {
 		var piece int64
 		_, err = fmt.Scanln(&piece)
 		if err != nil {
+			fmt.Println("Error:", err)
 			return
 		}
 		quantity = append(quantity, piece)
@@ -51,6 +53,7 @@ func collectInput() {
 		var unitPrice float64
 		_, err = fmt.Scanln(&unitPrice)
 		if err != nil {
+			fmt.Println("Error:", err)
 			return
 		}
 		price = append(price, unitPrice)
@@ -59,9 +62,10 @@ func collectInput() {
 		var status string
 		_, err := fmt.Scanln(&status)
 		if err != nil {
+			fmt.Println("Error:", err)
 			return
 		}
-		if status != strings.ToLower("yes") {
+		if strings.ToLower(status) != "yes" {
 			break
 		}
 	}
@@ -69,12 +73,14 @@ func collectInput() {
 	fmt.Println("What is your name?")
 	_, err = fmt.Scanln(&cashierName)
 	if err != nil {
+		fmt.Println("Error:", err)
 		return
 	}
 
 	fmt.Println("How much discount will he/she get?")
 	_, err = fmt.Scanln(&discountPercentage)
 	if err != nil {
+		fmt.Println("Error:", err)
 		return
 	}
 }
@@ -108,37 +114,38 @@ func calculateBalance() {
 	fmt.Println("How much did the customer give to you?")
 	_, err := fmt.Scanln(&amountPaid)
 	if err != nil {
+		fmt.Println("Error:", err)
 		return
 	}
 	itemBalance = amountPaid - billTotal
 }
 func printReceipt() {
 	fmt.Printf("SEMICOLON STORES\nMAIN BRANCH\nLOCATION: 312, HERBERT MACAULAY WAY, SABO YABA LAGOS.\nTEL: 03293828343\nDate: %s\nCashier: %s\nCustomer Name: %s\n", date.Format("02-01-2006"), cashierName, customerName)
-	fmt.Println("====================================")
+	fmt.Println("===================================")
 	fmt.Println("ITEM\tQTY\tPRICE\tTOTAL(NGN)")
 	fmt.Println("====================================")
 	for index := 0; index < len(productName); index++ {
 		fmt.Printf("%s\t%d\t%.2f\t%.2f\n", productName[index], quantity[index], price[index], total[index])
 	}
 	fmt.Println("=====================================")
-	fmt.Printf("%30s %.2f\n", "Sub total: ", subTotal)
-	fmt.Printf("%30s %.2f\n", "Discount: ", discountedPrice)
-	fmt.Printf("%30s %.2f\n", "VAT @ 17.50%%:", vat)
+	fmt.Printf("Sub total: %.2f\n", subTotal)
+	fmt.Printf("Discount: %.2f\n", discountedPrice)
+	fmt.Printf("VAT @ 17.50%%: %.2f\n", vat)
 	fmt.Println("======================================")
 }
 
 func printReceipt1() {
 	fmt.Printf("SEMICOLON STORES\nMAIN BRANCH\nLOCATION: 312, HERBERT MACAULAY WAY, SABO YABA LAGOS.\nTEL: 03293828343\nDate: %s\nCashier: %s\nCustomer Name: %s\n", date.Format("02-01-2006"), cashierName, customerName)
-	fmt.Println("====================================")
+	fmt.Println("========================================")
 	fmt.Println("ITEM\tQTY\tPRICE\tTOTAL(NGN)")
-	fmt.Println("====================================")
+	fmt.Println("=========================================")
 	for index := 0; index < len(productName); index++ {
 		fmt.Printf("%s\t%d\t%.2f\t%.2f\n", productName[index], quantity[index], price[index], total[index])
 	}
-	fmt.Println("=====================================")
-	fmt.Printf("%30s %.2f\n", "Sub total: ", subTotal)
-	fmt.Printf("%30s %.2f\n", "Discount: ", discountedPrice)
-	fmt.Printf("%30s %.2f\n", "VAT @ 17.50%%:", vat)
+	fmt.Println("=========================================")
+	fmt.Printf("Sub total: %.2f\n", subTotal)
+	fmt.Printf("Discount: %.2f\n", discountedPrice)
+	fmt.Printf("VAT @ 17.50%%: %.2f\n", vat)
 	fmt.Println("======================================")
 	fmt.Printf("Bill Total: %.2f\n", billTotal)
 	fmt.Printf("Amount paid: %.2f\n", amountPaid)

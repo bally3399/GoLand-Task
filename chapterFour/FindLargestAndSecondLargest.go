@@ -10,7 +10,10 @@ func main() {
 	for counter <= 10 {
 		fmt.Print("Enter number: ")
 		var num int
-		fmt.Scanln(&num)
+		_, err := fmt.Scanln(&num)
+		if err != nil {
+			return
+		}
 		if num > largest {
 			secondLargest = largest
 			largest = num

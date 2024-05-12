@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
 	var trip int
@@ -12,11 +10,17 @@ func main() {
 	for trip != -1 {
 		fmt.Print("Enter numbers of miles: ")
 		var miles float64
-		fmt.Scanln(&miles)
+		_, err := fmt.Scanln(&miles)
+		if err != nil {
+			return
+		}
 
 		fmt.Print("Enter numbers of gallons: ")
 		var gallons float64
-		fmt.Scanln(&gallons)
+		_, err = fmt.Scanln(&gallons)
+		if err != nil {
+			return
+		}
 
 		totalMilesDriven += miles
 		totalGallonsUsed += gallons
@@ -25,7 +29,10 @@ func main() {
 		fmt.Println(milesPerGallon)
 
 		fmt.Print("Enter numbers of trip (Enter -1 to exit): ")
-		fmt.Scanln(&trip)
+		_, err = fmt.Scanln(&trip)
+		if err != nil {
+			return
+		}
 	}
 
 	totalMilesPerGallon := totalMilesDriven / totalGallonsUsed

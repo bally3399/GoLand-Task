@@ -3,17 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	var number int
+	sum := 0
+	number := 0
 
-	for {
-		fmt.Println("Enter number:")
+	fmt.Print("Enter specified sum: ")
+	var specifiedSum int
+	fmt.Scanln(&specifiedSum)
+
+	for sum < specifiedSum {
+		fmt.Print("Enter number: ")
 		fmt.Scanln(&number)
-
-		if number == 1 || number == 2 {
-			fmt.Println("Successful")
-			break
-		} else {
-			fmt.Println("Invalid input. Please enter either 1 or 2.")
-		}
+		sum += number
 	}
+
+	fmt.Println("The total number entered is : ", sum)
+
 }

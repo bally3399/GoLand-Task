@@ -13,19 +13,28 @@ func main() {
 	}
 
 	fmt.Print("Enter Balance at the beginning of the month: ")
-	fmt.Scanln(&balanceAtBeginning)
+	_, err := fmt.Scanln(&balanceAtBeginning)
+	if err != nil {
+		return
+	}
 
 	fmt.Print("Enter total of all items charged: ")
-	_, err := fmt.Scanln(&charges)
+	_, err = fmt.Scanln(&charges)
 	if err != nil {
 		return
 	}
 
 	fmt.Print("Enter total of all credit applied: ")
-	fmt.Scanln(&credit)
+	_, err2 = fmt.Scanln(&credit)
+	if err2 != nil {
+		return
+	}
 
 	fmt.Print("Enter allowed credit limit: ")
-	fmt.Scanln(&limit)
+	_, err2 = fmt.Scanln(&limit)
+	if err2 != nil {
+		return
+	}
 
 	balance = balanceAtBeginning + charges
 	newBalance = balance - credit

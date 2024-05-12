@@ -7,7 +7,10 @@ import (
 func main() {
 	var number float64
 	fmt.Println("Enter number: ")
-	fmt.Scanln(&number)
+	_, err := fmt.Scanln(&number)
+	if err != nil {
+		return
+	}
 	result := value(int(number))
 	fmt.Println(result)
 }
